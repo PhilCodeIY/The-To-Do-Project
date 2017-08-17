@@ -13,15 +13,33 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'static')))
 
 app.get("/", function (req, res) {
-  res.render('index', { todos: todos });
+  res.render('index', {
+      todos: todos,
+      completed: completed
+  });
+});
 
-    });
+let todos = [];
+let completed = [];
 
-const todos = [];
+//search arrays.slice
 
 app.post("/", function (req, res, next) {
   todos.push(req.body.todo);
 res.redirect('/');
+  })
+
+// add a post route to push the info back to the webpage
+app.post("/completed", function (req, res, next) {
+    //completed.push(req.body.completed);
+  let item = req.body.completed;
+
+  todos = todos.filter(function(todo){
+    return todo !== item
+  })
+// add thie todo to the completed
+  completed.push(item);
+  res.redirect('/');
   })
 
 
