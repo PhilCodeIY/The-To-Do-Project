@@ -6,26 +6,24 @@
   <link rel="stylesheet" href="css/main.css" />
 </head>
   <body>
+    
     <h2>Add to your todo list today!</h2>
       <form action="/" method="post">
-      <input type="text" name="todo" placeholder="Add a todo" required>
-      <button type="submit" value="Submit">Add todo</button>
-</form>
-
-<!-- <button type="submit" value="Submit">Mark Complete</button> -->
+        <input type="text" name="todo" placeholder="Add a todo" required>
+        <button type="submit" value="Submit">Add todo</button>
+      </form>
 
     {{#todos}}
       <form action="/completed" method="POST">
         <input type="hidden" name="completed" value="{{.}}">
-
         <input type="submit" value="Mark complete">&emsp;&emsp;&emsp;{{.}}
       </form>
     {{/todos}}
 
-<h3>Completed tasks</h3>
-    {{#completed}}
-    <div>{{.}}</div>
-    {{/completed}}
+    <h3>Completed tasks</h3>
+      {{#completed}}
+      <div>{{.}}</div>
+      {{/completed}}
 
-</body>
-</html>
+  </body>
+  </html>

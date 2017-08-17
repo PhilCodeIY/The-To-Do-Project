@@ -22,8 +22,6 @@ app.get("/", function (req, res) {
 let todos = [];
 let completed = [];
 
-//search arrays.slice
-
 app.post("/", function (req, res, next) {
   todos.push(req.body.todo);
 res.redirect('/');
@@ -31,17 +29,14 @@ res.redirect('/');
 
 // add a post route to push the info back to the webpage
 app.post("/completed", function (req, res, next) {
-    //completed.push(req.body.completed);
   let item = req.body.completed;
-
   todos = todos.filter(function(todo){
     return todo !== item
   })
-// add thie todo to the completed
+
   completed.push(item);
   res.redirect('/');
   })
-
 
 app.listen(3000, function(){
   console.log("App running on port 3000")
